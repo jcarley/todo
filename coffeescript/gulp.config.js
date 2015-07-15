@@ -45,18 +45,31 @@ config.styles = {
 };
 
 config.css = {
-  src: [
-    config.PROJECT_BUILD + '**/*.css'
-  ]
+  app: {
+    src: [
+      config.PROJECT_BUILD + 'styles/**/*.css'
+    ]
+  },
+  vendor: {
+    src: [
+      config.PROJECT_BUILD + 'vendor/**/*.css'
+    ]
+  }
 };
 
 config.js = {
-  src: [
-    config.PROJECT_BUILD + 'vendor/**/*.js',
-    config.PROJECT_BUILD + '**/*.module.js',
-    config.PROJECT_BUILD + '**/*.js',
-    '!' + config.PROJECT_BUILD + '**/*.spec.js',
-  ]
+  app: {
+    src: [
+      config.PROJECT_BUILD + 'app/**/*.module.js',
+      config.PROJECT_BUILD + 'app/**/*.js',
+      '!' + config.PROJECT_BUILD + '**/*.spec.js',
+    ]
+  },
+  vendor: {
+    src: [
+      config.PROJECT_BUILD + 'vendor/**/*.js',
+    ]
+  }
 };
 
 config.bower = {
