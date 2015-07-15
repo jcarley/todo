@@ -91,9 +91,9 @@ gulp.task('inject', ['coffee'], function() {
   return gulp
     .src(config.index.src)
     .pipe($.plumber())
-    .pipe($.inject(gulp.src(config.css.vendor.src, {read: false}), {name: 'bower', ignorePath: ['build']}))
+    .pipe($.inject(gulp.src(config.css.vendor.src, {read: false}), {name: 'vendor', ignorePath: ['build']}))
     .pipe($.inject(gulp.src(config.css.app.src, {read: false}), {ignorePath: ['build']}))
-    .pipe($.inject(gulp.src(config.js.vendor.src, {read: false}), {name: 'bower', ignorePath: ['build']}))
+    .pipe($.inject(gulp.src(config.js.vendor.src, {read: false}), {name: 'vendor', ignorePath: ['build']}))
     .pipe($.inject(gulp.src(config.js.app.src, {read: false}), {ignorePath: ['build']}))
     .pipe(gulp.dest(config.client.dest));
 });
