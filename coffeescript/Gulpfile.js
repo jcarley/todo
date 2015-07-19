@@ -72,6 +72,13 @@ gulp.task('vendor:css', function() {
     .pipe(gulp.dest(config.client.vendor))
 });
 
+gulp.task('fonts', function() {
+  log('Copying fonts');
+  return gulp
+    .src(config.fonts.src)
+    .pipe(gulp.dest(config.fonts.dest));
+});
+
 gulp.task('templatecache', function() {
   log('Creating AngularJS $templateCache');
 
@@ -99,7 +106,7 @@ gulp.task('inject', ['coffee'], function() {
 });
 
 gulp.task('build', ['clean'], function (cb) {
-  runSequence(['vendor:js', 'vendor:css'], 'styles', 'templatecache', 'inject', cb);
+  runSequence(['vendor:js', 'vendor:css'], 'styles', 'templatecache', 'fonts', 'inject', cb);
 });
 
 /////////////////////////////////

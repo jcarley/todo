@@ -6,6 +6,8 @@ do ->
       'ui.router'
       'ngSanitize'
 
+      'app.components'
+
       # 'blocks.exception'
       'blocks.logger'
       'blocks.router'

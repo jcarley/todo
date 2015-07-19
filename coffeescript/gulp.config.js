@@ -72,6 +72,11 @@ config.js = {
   }
 };
 
+config.fonts = {
+  src: config.PROJECT_ROOT + 'bower_components/font-awesome/fonts/**/*.*',
+  dest: config.PROJECT_BUILD + 'fonts/'
+};
+
 config.bower = {
   json: require('./bower.json'),
   directory: config.PROJECT_ROOT + 'bower_components/',
