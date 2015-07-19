@@ -2,19 +2,19 @@ do ->
   'use strict'
 
   angular.module 'blocks.router'
-    .factory 'routerHelper', routehelper
+    .factory 'routerHelper', do ->
 
-  routehelper =
-    ($locationProvider, $stateProvider, $urlRouterProvider, $state) ->
+      routehelper =
+        ($locationProvider, $stateProvider, $urlRouterProvider, $state) ->
 
-      $locationProvider.html5Mode(true)
+          $locationProvider.html5Mode(true)
 
-      configureStates = (states, otherwisePath) ->
-        $stateProvider.state(state.state, state.config) for state in states
-        $urlRouterProvider.otherwise(otherwisePath) if otherwisePath
+          configureStates = (states, otherwisePath) ->
+            $stateProvider.state(state.state, state.config) for state in states
+            $urlRouterProvider.otherwise(otherwisePath) if otherwisePath
 
-      getStates = ->
-        $state.get()
+          getStates = ->
+            $state.get()
 
-      configureStates: configureStates
-      getStates: getStates
+          configureStates: configureStates
+          getStates: getStates
