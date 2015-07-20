@@ -1,20 +1,28 @@
 do ->
   'use strict'
 
-  angular.module 'blocks.router'
-    .factory 'routerHelper', do ->
+  angular
+    .module 'blocks.router'
+    .provider 'routehelperConfig', ->
+      @config = {}
+      get = =>
+        config: @config
+      $get: get
+    .factory 'routehelper',
+      ($location, $rootScope, logger, routehelperConfig) ->
 
-      routehelper =
-        ($locationProvider, $stateProvider, $urlRouterProvider, $state) ->
+        configureRoutes = (routes, otherwisePath) ->
+          $urlRouterProvider = routehelperConfig.config.$urlRouterProvider
 
-          $locationProvider.html5Mode(true)
+          if otherwisePath
+            $urlRouterProvider.otherwise(otherwisePath)
 
-          configureStates = (states, otherwisePath) ->
-            $stateProvider.state(state.state, state.config) for state in states
-            $urlRouterProvider.otherwise(otherwisePath) if otherwisePath
+          addRoute(route.url, route.config) for route in routes
 
-          getStates = ->
-            $state.get()
+        addRoute = (url, config) ->
+          $stateProvider = routehelperConfig.config.$stateProvider
+          $stateProvider.state(url, config)
+          logger.info "New url added for #{url}", config, "AddRoute"
 
-          configureStates: configureStates
-          getStates: getStates
+
+        configureRoutes: configureRoutes
