@@ -10,3 +10,4 @@ do ->
       config = routehelperConfigProvider.$get()
       config.config.$stateProvider = $stateProvider
       config.config.$urlRouterProvider = $urlRouterProvider
+

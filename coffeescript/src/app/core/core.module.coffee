@@ -3,8 +3,8 @@ do ->
 
   angular.module 'app.core', [
       'ngAnimate'
-      'ui.router'
       'ui.router.state'
+      'ui.router'
       'ngSanitize'
 
       # 'blocks.exception'

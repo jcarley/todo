@@ -24,4 +24,11 @@ do ->
           $stateProvider.state(state, config)
           logger.info "New url added for #{state}", config, "AddRoute"
 
+        sync = ->
+          $injector = angular.injector()
+          $urlRouterProvider = routehelperConfig.config.$urlRouterProvider
+          $urlRouter = $injector.invoke($urlRouterProvider.$get)
+          $urlRouter.sync()
+
         configureRoutes: configureRoutes
+        sync: sync

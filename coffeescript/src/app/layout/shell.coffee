@@ -6,15 +6,14 @@ do ->
     .controller 'Shell', do ->
 
       class Shell
-        constructor: ($rootScope, $state) ->
+        constructor: ($rootScope, $urlRouter, routehelper) ->
           @rootScope = $rootScope
-          @state = $state
           @rootScope.$on('ff-menu-item-selected-event', @activate)
+          @urlRouter = $urlRouter
+          @urlRouter.sync()
+          # routehelper.sync()
 
         activate: (evt, data) =>
-          console.log evt
-          console.log data
           @state.go data.route
-
 
 
