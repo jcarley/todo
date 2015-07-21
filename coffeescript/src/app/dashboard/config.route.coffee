@@ -7,15 +7,16 @@ do ->
 
       routes =
         [
-          url: '/'
+          state: 'dashboard'
           config:
+              url: '/dashboard'
               templateUrl: 'app/dashboard/dashboard.html'
-              controller: 'Dashboard'
-              controllerAs: 'vm'
-              title: 'dashboard'
-              settings:
-                  nav: 1
-                  content: '<i class="fa fa-dashboard"></i> Dashboard'
+              controller: 'Dashboard as vm'
+              data:
+                title: 'dashboard'
+                settings:
+                    nav: 1
+                    content: '<i class="fa fa-dashboard"></i> Dashboard'
         ]
 
-      routehelper.configureRoutes(routes)
+      routehelper.configureRoutes(routes, '/dashboard')

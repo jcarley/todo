@@ -17,12 +17,11 @@ do ->
           if otherwisePath
             $urlRouterProvider.otherwise(otherwisePath)
 
-          addRoute(route.url, route.config) for route in routes
+          addRoute(route.state, route.config) for route in routes
 
-        addRoute = (url, config) ->
+        addRoute = (state, config) ->
           $stateProvider = routehelperConfig.config.$stateProvider
-          $stateProvider.state(url, config)
-          logger.info "New url added for #{url}", config, "AddRoute"
-
+          $stateProvider.state(state, config)
+          logger.info "New url added for #{state}", config, "AddRoute"
 
         configureRoutes: configureRoutes
