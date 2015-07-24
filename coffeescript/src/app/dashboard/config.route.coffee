@@ -11,7 +11,8 @@ do ->
           config:
               url: '/dashboard'
               templateUrl: 'app/dashboard/dashboard.html'
-              controller: 'Dashboard as vm'
+              controller: 'Dashboard'
+              controllerAs: 'vm'
               data:
                 title: 'dashboard'
                 settings:
