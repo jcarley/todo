@@ -7,6 +7,7 @@ do ->
     'ui.router.state'
     'ui.router'
     'ngSanitize'
+    'ui.bootstrap'
 
     # 'blocks.exception'
     'blocks.logger'
