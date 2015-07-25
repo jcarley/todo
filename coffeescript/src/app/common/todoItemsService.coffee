@@ -6,11 +6,9 @@ do ->
     .factory 'TodoItemsService', ($q) ->
 
       all: ->
-        defObj = $q.defer()
-        defObj.resolve [
+        $q.when [
             {name: 'Mow'}
             {name: 'Clean'}
             {name: 'Drink'}
           ]
-        defObj.promise
 
