@@ -14,7 +14,7 @@
     </thead>
     <tbody>
       <tr ng-repeat="item in vm.items">
-        <td><input type="CHECKBOX"></input></td>
+        <td><input type="CHECKBOX" ng-checked="{{item.selected}}" ng-click="vm.toggleItem(item)"></input></td>
         <td>{{item.name}}</td>
       </tr>
     </tbody>

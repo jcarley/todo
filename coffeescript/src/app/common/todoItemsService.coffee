@@ -7,8 +7,8 @@ do ->
 
       all: ->
         $q.when [
-            {name: 'Mow'}
-            {name: 'Clean'}
-            {name: 'Drink'}
+            {id: 1, name: 'Mow'}
+            {id: 2, name: 'Clean'}
+            {id: 3, name: 'Drink'}
           ]
 

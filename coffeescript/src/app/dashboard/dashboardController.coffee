@@ -18,3 +18,7 @@ do ->
               @items = data
               @logger.success "Got all the items", {}, "Dashboard#init"
 
+        toggleItem: (item) ->
+          item.selected = !item.selected
+          @logger.info "Item selected", item, "ToggleItem"
+
