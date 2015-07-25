@@ -2,14 +2,15 @@ do ->
   'use strict'
 
   angular
-    .module "app.dashboard"
-    .service "TodoItemsService", do ->
+    .module 'app.common'
+    .factory 'TodoItemsService', ($q) ->
 
-      class TodoItemsService
-
-        all: -> [
-          {name: 'Mow'}
-          {name: 'Clean'}
-          {name: 'Drink'}
-        ]
+      all: ->
+        defObj = $q.defer()
+        defObj.resolve [
+            {name: 'Mow'}
+            {name: 'Clean'}
+            {name: 'Drink'}
+          ]
+        defObj.promise
 

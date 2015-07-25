@@ -8,10 +8,14 @@ do ->
       get = =>
         config: @config
       $get: get
-    .factory 'routehelper',
-      ($location, $rootScope, logger, routehelperConfig) ->
+    .provider 'routehelper',
+      (loggerProvider, routehelperConfigProvider) ->
+
+        get = ->
+          {}
 
         configureRoutes = (routes, otherwisePath) ->
+          routehelperConfig = routehelperConfigProvider.$get()
           $urlRouterProvider = routehelperConfig.config.$urlRouterProvider
 
           if otherwisePath
@@ -20,11 +24,14 @@ do ->
           addRoute(route.state, route.config) for route in routes
 
         addRoute = (state, config) ->
+          routehelperConfig = routehelperConfigProvider.$get()
           $stateProvider = routehelperConfig.config.$stateProvider
           $stateProvider.state(state, config)
+          logger = loggerProvider.$get()
           logger.info "New url added for #{state}", config, "AddRoute"
 
         sync = ->
+          routehelperConfig = routehelperConfigProvider.$get()
           $injector = angular.injector()
           $urlRouterProvider = routehelperConfig.config.$urlRouterProvider
           $urlRouter = $injector.invoke($urlRouterProvider.$get)
@@ -32,3 +39,4 @@ do ->
 
         configureRoutes: configureRoutes
         sync: sync
+        $get: get

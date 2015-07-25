@@ -2,15 +2,19 @@ do ->
   'use strict'
 
   angular
-    .module "app.dashboard"
-    .controller "Dashboard", do ->
+    .module 'app.dashboard'
+    .controller 'Dashboard', do ->
 
       class Dashboard
         constructor: (logger, TodoItemsService) ->
           @logger = logger
           @todoItemsService = TodoItemsService
+          @init()
 
-        items: ->
-          allItems = @todoItemsService.all()
-          @logger.info "Items", allItems, "Dashboard#items"
-          allItems
+        init: ->
+          @todoItemsService
+            .all()
+            .then (data) =>
+              @items = data
+              @logger.success "Got all the items", {}, "Dashboard#init"
+

@@ -5,6 +5,8 @@ do ->
     'app.core'
 
     'app.components'
+
+    'app.common'
     'app.layout'
     'app.dashboard'
   ]
