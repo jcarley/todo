@@ -33,6 +33,11 @@ gulp.task('coffee', ['vet'], function() {
     .pipe(gulp.dest(config.coffee.dest));
 });
 
+gulp.task('clean:js', function(done) {
+  log('Cleaning: ' + $.util.colors.blue(config.PROJECT_BUILD + 'app'));
+  del(config.PROJECT_BUILD + 'app', done);
+});
+
 gulp.task('clean', function(done) {
   log('Cleaning: ' + $.util.colors.blue(config.client.dest));
   del(config.client.dest, done);
@@ -107,6 +112,10 @@ gulp.task('inject', ['coffee'], function() {
 
 gulp.task('build', ['clean'], function (cb) {
   runSequence(['vendor:js', 'vendor:css'], 'styles', 'templatecache', 'fonts', 'inject', cb);
+});
+
+gulp.task('dev', ['clean:js'], function(cb) {
+  runSequence('templatecache', 'inject', cb);
 });
 
 /////////////////////////////////
