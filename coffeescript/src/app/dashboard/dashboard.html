@@ -1,8 +1,23 @@
 <div>
-  Dashboard
 
-  <div ng-repeat="item in vm.items">
-    <div><input type="CHECKBOX">{{item.name}}</input></div>
+  <div>
+    <button type="button" class="btn btn-primary">Add</button>
+    <button type="button" class="btn btn-danger">Done</button>
   </div>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th><input type="CHECKBOX"></input></td>
+        <th>Items</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="item in vm.items">
+        <td><input type="CHECKBOX"></input></td>
+        <td>{{item.name}}</td>
+      </tr>
+    </tbody>
+  </table>
 
 </div>
