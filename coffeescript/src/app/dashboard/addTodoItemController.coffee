@@ -13,7 +13,6 @@ do ->
           @todoItemsService = TodoItemsService
 
         ok: ->
-          @logger.info "Adding todo item", @item, "AddTodoItem"
           @todoItemsService.addItem(@item.name).then =>
             @modalInstance.close()
 

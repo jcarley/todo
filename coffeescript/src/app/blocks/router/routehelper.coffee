@@ -27,8 +27,6 @@ do ->
           routehelperConfig = routehelperConfigProvider.$get()
           $stateProvider = routehelperConfig.config.$stateProvider
           $stateProvider.state(state, config)
-          logger = loggerProvider.$get()
-          logger.info "New url added for #{state}", config, "AddRoute"
 
         sync = ->
           routehelperConfig = routehelperConfigProvider.$get()

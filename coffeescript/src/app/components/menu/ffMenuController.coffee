@@ -14,7 +14,6 @@ do ->
           @activeElement
 
         setActiveElement: (el) ->
-          @logger.info "new active element set", el, "Active Element"
           @activeElement = el
 
         setRoute: (route) ->

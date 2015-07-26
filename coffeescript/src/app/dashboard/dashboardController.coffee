@@ -17,14 +17,12 @@ do ->
 
         toggleItem: (item) ->
           item.selected = !item.selected
-          @logger.info "Item selected", item, "ToggleItem"
 
         refreshItems: ->
           @todoItemsService
             .all()
             .then (data) =>
               @items = data
-              @logger.success "Got all the items", {}, "Dashboard#init"
 
         open: ->
           modalInstance = @modal.open
@@ -34,6 +32,5 @@ do ->
 
           modalInstance.result.then =>
             @refreshItems()
-
-
+            @logger.success "New todo item added successfully", {}, "Todo"
 
