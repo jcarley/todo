@@ -118,6 +118,29 @@ gulp.task('dev', ['clean:js'], function(cb) {
   runSequence('templatecache', 'inject', cb);
 });
 
+/**
+ * Watch files and build
+ */
+gulp.task('watch', function() {
+    log('Watching all files');
+
+    gulp
+      .watch(config.coffee.src, ['coffee'])
+      .on('change', logWatch);
+
+    gulp
+      .watch(config.styles.src, ['styles'])
+      .on('change', logWatch);
+
+    gulp
+      .watch(config.htmltemplates.src, ['templatecache'])
+      .on('change', logWatch)
+
+    function logWatch(event) {
+        log('*** File ' + event.path + ' was ' + event.type + ', running tasks...');
+    }
+});
+
 /////////////////////////////////
 
 function log(msg) {
