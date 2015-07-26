@@ -1,7 +1,10 @@
 <div>
 
   <div>
-    <button type="button" class="btn btn-primary">Add</button>
+
+    <div ng-include="'app/dashboard/addTodoItem.html'"></div>
+
+    <button type="button" class="btn btn-primary" ng-click="vm.open()">Add</button>
     <button type="button" class="btn btn-danger">Done</button>
   </div>
 
