@@ -6,16 +6,13 @@ do ->
     .controller 'AddTodoItem', do ->
 
       class AddTodoItem
-        constructor: (logger, $modalInstance, TodoItemsService) ->
+        constructor: (logger, TodoItemsService) ->
           @item = { name: "" }
           @logger = logger
-          @modalInstance = $modalInstance
           @todoItemsService = TodoItemsService
 
-        ok: ->
+        addItem: ->
           @todoItemsService.addItem(@item.name).then =>
-            @modalInstance.close()
-
-        cancel: ->
-          @modalInstance.dismiss('cancel')
+            @logger.success "New todo item added successfully.", @item, "Add Item"
+            @item.name = ""
 

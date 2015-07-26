@@ -6,9 +6,8 @@ do ->
     .controller 'Dashboard', do ->
 
       class Dashboard
-        constructor: (logger, $modal, TodoItemsService) ->
+        constructor: (logger, TodoItemsService) ->
           @logger = logger
-          @modal = $modal
           @todoItemsService = TodoItemsService
           @init()
 
@@ -18,19 +17,16 @@ do ->
         toggleItem: (item) ->
           item.selected = !item.selected
 
+        startEditItem: (item) ->
+          item.isEditting = true
+
+        endEditItem: (item) ->
+          item.isEditting = false
+
         refreshItems: ->
+          @logger.info "Refreshing the items list", {}, "Refresh Items"
           @todoItemsService
             .all()
             .then (data) =>
               @items = data
-
-        open: ->
-          modalInstance = @modal.open
-            animation: true
-            templateUrl: 'addTodoItem.html'
-            controller: 'AddTodoItem as vm'
-
-          modalInstance.result.then =>
-            @refreshItems()
-            @logger.success "New todo item added successfully", {}, "Todo"
 
