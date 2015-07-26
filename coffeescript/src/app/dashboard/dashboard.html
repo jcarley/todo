@@ -4,8 +4,14 @@
 
     <div ng-include="'app/dashboard/addTodoItem.html'"></div>
 
-    <button type="button" class="btn btn-primary" ng-click="vm.open()">Add</button>
-    <button type="button" class="btn btn-danger">Done</button>
+    <button type="button" class="btn btn-primary" ng-click="vm.open()">
+      <i class="fa fa-plus"></i>
+      Add
+    </button>
+    <button type="button" class="btn btn-danger">
+      <i class="fa fa-trash-o"></i>
+      Done
+    </button>
   </div>
 
   <table class="table">
