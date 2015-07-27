@@ -27,8 +27,7 @@
               <input type="CHECKBOX" ng-value="item.selected" ng-checked="item.selected" ng-click="vm.toggleItem(item)"></input>
               <input type="text" autofocus
                                  ng-model="item.name"
-                                 ng-blur="vm.endEditItem(item)"
-                                 ng-mouseout="vm.endEditItem(item)">
+                                 ng-blur="vm.endEditItem(item)">
               </input>
               <a href="#" ng-click="vm.endEditItem(item)">Done</a>
             </div>
