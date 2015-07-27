@@ -16,15 +16,15 @@
         <div class="col-md-12">
 
             <div id="viewPanel" ng-hide="item.isEditting">
-              <input type="CHECKBOX" ng-value="item.selected" ng-checked="item.selected" ng-click="vm.toggleItem(item)"></input>
+              <input type="CHECKBOX" ng-value="item.isDone" ng-checked="item.isDone" ng-click="vm.toggleItem(item)"></input>
               <a href="#" ng-click="vm.startEditItem(item)"
-                          ng-class="{done: item.selected}">
+                          ng-class="{done: item.isDone}">
                 {{item.name}}
               </a>
             </div>
 
             <div id="editPanel" ng-show="item.isEditting">
-              <input type="CHECKBOX" ng-value="item.selected" ng-checked="item.selected" ng-click="vm.toggleItem(item)"></input>
+              <input type="CHECKBOX" ng-value="item.isDone" ng-checked="item.isDone" ng-click="vm.toggleItem(item)"></input>
               <input type="text" autofocus
                                  ng-model="item.name"
                                  ng-blur="vm.endEditItem(item)">

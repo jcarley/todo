@@ -15,13 +15,13 @@ do ->
           @refreshItems()
 
         toggleItem: (item) ->
-          item.selected = !item.selected
+          item.isDone = !item.isDone
 
         markAllAsComplete: ->
-          item.selected = true for item in @items
+          item.isDone = true for item in @items
 
         reset: ->
-          item.selected = false for item in @items
+          item.isDone = false for item in @items
 
         startEditItem: (item) ->
           item.isEditting = true
