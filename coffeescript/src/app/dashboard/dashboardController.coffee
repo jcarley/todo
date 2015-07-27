@@ -17,6 +17,12 @@ do ->
         toggleItem: (item) ->
           item.selected = !item.selected
 
+        markAllAsComplete: ->
+          item.selected = true for item in @items
+
+        reset: ->
+          item.selected = false for item in @items
+
         startEditItem: (item) ->
           item.isEditting = true
 

@@ -6,10 +6,10 @@
 
     <div>
       <div class="row">
-        <div class="col-md-3"><a href="#">Mark all as complete</a></div>
+        <div class="col-md-3"><a href="#" ng-click="vm.markAllAsComplete()">Mark all as complete</a></div>
         <div class="col-md-2"><a href="#">Show archived</a></div>
         <div class="col-md-2"><a href="#">Purge</a></div>
-        <div class="col-md-2"><a href="#">Reset</a></div>
+        <div class="col-md-2"><a href="#" ng-click="vm.reset()">Reset</a></div>
       </div>
 
       <div class="row" ng-repeat="item in vm.items">
@@ -17,12 +17,19 @@
 
             <div id="viewPanel" ng-hide="item.isEditting">
               <input type="CHECKBOX" ng-value="item.selected" ng-checked="item.selected" ng-click="vm.toggleItem(item)"></input>
-              <a href="#" ng-click="vm.startEditItem(item)">{{item.name}}</a>
+              <a href="#" ng-click="vm.startEditItem(item)"
+                          ng-class="{done: item.selected}">
+                {{item.name}}
+              </a>
             </div>
 
             <div id="editPanel" ng-show="item.isEditting">
               <input type="CHECKBOX" ng-value="item.selected" ng-checked="item.selected" ng-click="vm.toggleItem(item)"></input>
-              <input type="text" ng-model="item.name"></input>
+              <input type="text" autofocus
+                                 ng-model="item.name"
+                                 ng-blur="vm.endEditItem(item)"
+                                 ng-mouseout="vm.endEditItem(item)">
+              </input>
               <a href="#" ng-click="vm.endEditItem(item)">Done</a>
             </div>
 
