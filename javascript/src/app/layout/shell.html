@@ -1,0 +1,21 @@
+<div>
+
+  <div ng-include="'app/layout/top-nav.html'"></div>
+
+  <div class="container" ng-controller="Shell as vm">
+
+    <div ng-include="'app/layout/header.html'"></div>
+
+    <div class="row">
+
+      <div class="col-sm-12 blog-main">
+
+        <div ui-view></div>
+
+      </div><!-- blog main -->
+
+    </div><!-- row -->
+
+  </div><!-- container -->
+
+</div>

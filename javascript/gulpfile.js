@@ -20,7 +20,52 @@ gulp.task('vet', function() {
     .pipe($.jshint.reporter('fail'));
 });
 
+// styles
+gulp.task('styles', ['clean-styles'], function() {
+  log('Copying CSS');
+
+  return gulp
+    .src(config.css.src)
+    .pipe($.plumber())
+    .pipe($.autoprefixer({browsers: ['last 2 versions', '> 5%']}))
+    .pipe(gulp.dest(config.css.dest));
+});
+
+gulp.task('clean-styles', function(done) {
+  clean(config.css.dest + '**/*.css', done);
+});
+
+// fonts
+gulp.task('fonts', ['clean-fonts'], function() {
+  log('Copying fonts');
+  return gulp.src(config.fonts.src)
+    .pipe(gulp.dest(config.fonts.dest));
+});
+
+gulp.task('clean-fonts', function(done) {
+  clean(config.fonts.dest + '/**/*.*', done);
+});
+
+// template cache
+gulp.task('templatecache', function() {
+  log('Creating AngularJS $templateCache');
+
+  return gulp
+    .src(config.htmltemplates.src)
+    .pipe($.minifyHtml({empty: true}))
+    .pipe($.angularTemplatecache(
+      config.templateCache.file,
+      config.templateCache.options
+    ))
+    .pipe(gulp.dest(config.templateCache.dest));
+});
+
 /////////////////////////////////////////////////////////
+
+function clean(path, done) {
+  log('Cleaning: ' + $.util.colors.blue(path));
+  del(path, done);
+}
 
 function log(msg) {
   if (typeof(msg) === 'object') {

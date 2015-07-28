@@ -11,8 +11,32 @@ config.DIST = path.join(config.PROJECT_ROOT, 'dist');
 config.alljs = [
   './src/app/**/*.js',
   './*.js',
-  '!./src/app/bower_components/**/*.js',
+  '!./src/bower_components/**/*.js',
   '!./node_modules/**/*.js'
 ];
+
+config.fonts = {
+  src: config.PROJECT_SRC + 'app/bower_components/font-awesome/fonts/**/*.*',
+  dest: config.PROJECT_BUILD + 'fonts'
+};
+
+config.css = {
+  src: config.PROJECT_SRC + 'styles/**/*.css',
+  dest: config.PROJECT_BUILD + 'styles/'
+};
+
+config.htmltemplates = {
+  src: path.join(config.PROJECT_SRC, 'app/', '**/*.html')
+};
+
+config.templateCache = {
+  file: 'templates.js',
+  options: {
+    module: 'app.core',
+    standAlone: false,
+    root: 'app/'
+  },
+  dest: path.join(config.PROJECT_BUILD, 'app/')
+};
 
 module.exports = config;
