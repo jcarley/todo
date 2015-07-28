@@ -28,4 +28,3 @@ do ->
         success : success,
         warning : warning,
         log     : $log.log
-
