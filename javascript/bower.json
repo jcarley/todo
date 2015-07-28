@@ -1,0 +1,48 @@
+{
+  "name": "todo",
+  "version": "0.1.0",
+  "description": "example todo app",
+  "authors": [
+    "Jefferson Carley"
+  ],
+  "license": "MIT",
+  "homepage": "none",
+  "ignore": [
+    "test",
+    "tests",
+    "**/.*",
+    "node_modules",
+    "bower_components"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.4",
+    "bootstrap": "~3.3.5",
+    "angular": "~1.4.1",
+    "angular-sanitize": "~1.4.1",
+    "font-awesome": "~4.3.0",
+    "moment": "~2.10.3",
+    "angular-ui-router": "~0.2.15",
+    "toastr": "~2.1.1",
+    "angular-animate": "~1.4.1",
+    "angular-resource": "~1.4.3",
+    "lodash": "~3.10.0",
+    "angular-bootstrap": "~0.13.1"
+  },
+  "devDependencies": {
+    "karma": "~0.4.6"
+  },
+  "overrides": {
+    "bootstrap": {
+      "main": [
+        "dist/css/bootstrap.css",
+        "dist/js/bootstrap.js"
+      ]
+    },
+    "angular-bootstrap": {
+      "main": [
+        "ui-bootstrap.js",
+        "ui-bootstrap-tpls.js"
+      ]
+    }
+  }
+}
