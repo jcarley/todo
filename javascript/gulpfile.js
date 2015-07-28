@@ -60,6 +60,19 @@ gulp.task('templatecache', function() {
     .pipe(gulp.dest(config.templateCache.dest));
 });
 
+// vendor:css injecting
+gulp.task('vendor:css', function() {
+  log('Concat vendor css and place in build folder');
+
+  var bowerMainCSSFiles = bowerMain('css', 'min.css');
+
+  return gulp
+    .src(config.index.src)
+    .pipe($.if(args.verbose, $.print()))
+    .pipe($.inject(gulp.src(bowerMainCSSFiles.normal, {read: false}), {name: 'vendor'}))
+    .pipe(gulp.dest(config.index.dest));
+});
+
 /////////////////////////////////////////////////////////
 
 function clean(path, done) {
