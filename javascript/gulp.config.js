@@ -20,6 +20,10 @@ config.alljs = [
   '!./node_modules/**/*.js'
 ];
 
+config.client = {
+  vendor: config.PROJECT_BUILD + 'vendor/'
+};
+
 config.fonts = {
   src: config.PROJECT_SRC + 'app/bower_components/font-awesome/fonts/**/*.*',
   dest: config.PROJECT_BUILD + 'fonts'

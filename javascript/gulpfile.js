@@ -60,17 +60,49 @@ gulp.task('templatecache', function() {
     .pipe(gulp.dest(config.templateCache.dest));
 });
 
-// vendor:css injecting
+// vendor:js
+gulp.task('vendor:js', function() {
+  log('Concat vendor js and place in build folder');
+
+  var bowerMainJavaScriptFiles = bowerMain('js', 'min.js');
+
+  return gulp
+    .src(bowerMainJavaScriptFiles.normal)
+    .pipe($.if(args.verbose, $.print()))
+    .pipe($.concat('vendor-scripts.js'))
+    .pipe(gulp.dest(config.client.vendor));
+});
+
+// vendor:css
 gulp.task('vendor:css', function() {
   log('Concat vendor css and place in build folder');
 
   var bowerMainCSSFiles = bowerMain('css', 'min.css');
 
   return gulp
-    .src(config.index.src)
+    .src(bowerMainCSSFiles.normal)
     .pipe($.if(args.verbose, $.print()))
-    .pipe($.inject(gulp.src(bowerMainCSSFiles.normal, {read: false}), {name: 'vendor'}))
-    .pipe(gulp.dest(config.index.dest));
+    .pipe($.concat('vendor-styles.css'))
+    .pipe(gulp.dest(config.client.vendor));
+});
+
+gulp.task('inject', function() {
+  log('Wire up the app css and js into the html');
+
+  return gulp
+    .src(config.index.src)
+    .pipe($.plumber())
+    .pipe($.inject(
+      gulp.src(config.css.vendor.src, {read: false}),
+      {name: 'vendor', ignorePath: ['build']}))
+
+    // .pipe($.inject(gulp.src(config.css.app.src, {read: false}), {ignorePath: ['build']}))
+    .pipe($.inject(
+      gulp.src(config.js.vendor.src, {read: false}),
+      {name: 'vendor', ignorePath: ['build']}))
+
+    // .pipe($.inject(gulp.src(config.js.app.src, {read: false}), {ignorePath: ['build']}))
+    .pipe(gulp.dest(config.client.dest));
 });
 
 /////////////////////////////////////////////////////////
