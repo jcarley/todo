@@ -10,7 +10,7 @@ config.DIST = path.join(config.PROJECT_ROOT, 'dist');
 
 config.index = {
   src: config.PROJECT_SRC + 'index.html',
-  dest: config.PROJECT_BUILD + 'index.html'
+  dest: config.PROJECT_BUILD
 };
 
 config.alljs = [
@@ -57,6 +57,14 @@ config.css = {
   vendor: {
     src: [
       config.PROJECT_BUILD + 'vendor/**/*.css'
+    ]
+  }
+};
+
+config.js = {
+  vendor: {
+    src: [
+     config.PROJECT_BUILD + 'vendor/**/*.js'
     ]
   }
 };

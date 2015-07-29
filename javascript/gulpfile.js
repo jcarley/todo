@@ -102,7 +102,7 @@ gulp.task('inject', function() {
       {name: 'vendor', ignorePath: ['build']}))
 
     // .pipe($.inject(gulp.src(config.js.app.src, {read: false}), {ignorePath: ['build']}))
-    .pipe(gulp.dest(config.client.dest));
+    .pipe(gulp.dest(config.index.dest));
 });
 
 /////////////////////////////////////////////////////////
