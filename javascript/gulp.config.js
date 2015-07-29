@@ -62,6 +62,11 @@ config.css = {
 };
 
 config.js = {
+  app: {
+    src: [
+      config.PROJECT_BUILD + 'app/**/*.js'
+    ]
+  },
   vendor: {
     src: [
      config.PROJECT_BUILD + 'vendor/**/*.js'
