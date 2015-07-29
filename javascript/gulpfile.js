@@ -67,7 +67,7 @@ gulp.task('vendor:js', function() {
   var bowerMainJavaScriptFiles = bowerMain('js', 'min.js');
 
   return gulp
-    .src(bowerMainJavaScriptFiles.normal)
+    .src(bowerMainJavaScriptFiles.minified)
     .pipe($.if(args.verbose, $.print()))
     .pipe($.concat('vendor-scripts.js'))
     .pipe(gulp.dest(config.client.vendor));
@@ -80,7 +80,7 @@ gulp.task('vendor:css', function() {
   var bowerMainCSSFiles = bowerMain('css', 'min.css');
 
   return gulp
-    .src(bowerMainCSSFiles.normal)
+    .src(bowerMainCSSFiles.minified)
     .pipe($.if(args.verbose, $.print()))
     .pipe($.concat('vendor-styles.css'))
     .pipe(gulp.dest(config.client.vendor));
